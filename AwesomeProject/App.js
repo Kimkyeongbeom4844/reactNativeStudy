@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, TextInput, Image } from "react-native";
+import { ScrollView, View, Text, TextInput, Image } from "react-native";
 import Cat from "./components/Cat";
+import Pizza from "./components/Pizza";
 
 const App = () => {
   return (
-    <View>
+    <ScrollView>
       <Text>Hello, World</Text>
       <Cat alias="나비" />
       <Cat alias="냥이" />
@@ -13,11 +14,20 @@ const App = () => {
         defaultValue="고양이 이름을 입력하세요"
         style={{ borderColor: "gray", borderWidth: 1 }}
       />
-      <Image
-        source={require("./assets/favicon.png")}
-        style={{ width: 200, height: 200 }}
-      />
-    </View>
+      <View style={{ display: "flex", flexDirection: "row" }}>
+        <Image
+          source={require("./assets/favicon.png")}
+          style={{ width: 200, height: 200 }}
+        />
+        <Image
+          source={{
+            uri: "https://reactnative.dev/docs/assets/p_cat1.png",
+          }}
+          style={{ width: 200, height: 200 }}
+        />
+      </View>
+      <Pizza />
+    </ScrollView>
   );
 };
 

@@ -1,7 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  useColorScheme,
+} from 'react-native';
 
 const DetailScreen = ({navigation, route}) => {
+  const colorScheme = useColorScheme();
   const {id, name} = route.params;
   const [uid, setUid] = useState(id);
   return (

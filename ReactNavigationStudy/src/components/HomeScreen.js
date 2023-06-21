@@ -6,7 +6,7 @@ const Container = styled.View`
   flex: 1;
   background-color: ${({colorSheme}) =>
     colorSheme === 'dark' ? 'black' : 'white'};
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 `;
 

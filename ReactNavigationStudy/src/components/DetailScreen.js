@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,11 @@ import {
   useColorScheme,
 } from 'react-native';
 
-const DetailScreen = ({navigation, route}) => {
+const DetailScreen = ({navigation}) => {
   const colorScheme = useColorScheme();
-  const {id, name} = route.params;
-  const [uid, setUid] = useState(id);
   return (
     <View style={styles.container}>
       <Text>Details Screen</Text>
-      <Text style={styles.h1}>Hello my name is {name}</Text>
-      <Text>id : {uid}</Text>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Text style={styles.button}>Go to Home..</Text>
       </TouchableOpacity>

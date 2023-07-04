@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import {Button, Text, View, StyleSheet, useColorScheme} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useFocusEffect, useIsFocused} from '@react-navigation/native';
+import S from '../assets/styles';
 
 export default function HomeScreen({
   navigation,
@@ -20,7 +21,9 @@ export default function HomeScreen({
     <View
       style={{
         backgroundColor: color === 'dark' ? 'black' : 'white',
+        gap: 5,
       }}>
+      <Text style={S.h2}>Home</Text>
       <Button
         title="프로필 페이지로"
         onPress={() => navigation.navigate('Profile', {name: '김경범'})}
@@ -29,14 +32,15 @@ export default function HomeScreen({
         title="카운터 페이지로"
         onPress={() => navigation.navigate('Counter')}
       />
-      <Text
-        style={{
-          color: color === 'dark' ? 'white' : 'black',
-        }}>
+      <Text style={{...styles.h3, color: color === 'dark' ? 'white' : 'black'}}>
         {isFocused ? 'focused' : 'unfocused'}
       </Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  h3: {
+    fontStyle: 'italic',
+  },
+});

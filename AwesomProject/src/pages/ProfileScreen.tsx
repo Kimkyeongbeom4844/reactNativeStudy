@@ -7,6 +7,7 @@ import {
   useColorScheme,
 } from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import S from '../assets/styles';
 
 function ProfileScreen({
   navigation,
@@ -17,7 +18,9 @@ function ProfileScreen({
     <View
       style={{
         backgroundColor: color === 'dark' ? 'black' : 'white',
+        gap: 5,
       }}>
+      <Text style={S.h2}>Profile</Text>
       <Text
         style={{
           color: color === 'dark' ? 'white' : 'black',

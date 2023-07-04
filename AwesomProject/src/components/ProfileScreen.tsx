@@ -1,14 +1,17 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   TouchableHighlight,
   View,
   useColorScheme,
 } from 'react-native';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-function ProfileScreen({navigation, route}) {
+function ProfileScreen({
+  navigation,
+  route,
+}: NativeStackScreenProps<any, 'Profile'>) {
   const color = useColorScheme();
   return (
     <View
@@ -21,7 +24,7 @@ function ProfileScreen({navigation, route}) {
         }}>
         여기는 {route.params?.name ?? '무제'}의 프로필입니다
       </Text>
-      <TouchableHighlight onPress={() => navigation.navigate('Home')}>
+      <TouchableHighlight onPress={() => navigation.goBack()}>
         <View
           style={{
             backgroundColor: 'gray',

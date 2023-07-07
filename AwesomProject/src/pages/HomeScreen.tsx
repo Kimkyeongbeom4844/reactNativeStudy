@@ -1,5 +1,12 @@
-import React, {useCallback} from 'react';
-import {Button, Text, View, StyleSheet, useColorScheme} from 'react-native';
+import React, {useCallback, useState, useEffect} from 'react';
+import {
+  Button,
+  Text,
+  View,
+  StyleSheet,
+  useColorScheme,
+  Switch,
+} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 import S from '../assets/styles';
@@ -9,11 +16,18 @@ export default function HomeScreen({
 }: NativeStackScreenProps<any, 'Home'>) {
   const color = useColorScheme();
   const isFocused = useIsFocused();
+  const [isOn, setIsOn] = useState(false);
+  // useEffect(() => {
+  //   console.log('홈mount');
+  //   return () => {
+  //     console.log('홈unmount');
+  //   };
+  // }, []);
   useFocusEffect(
     useCallback(() => {
-      console.log('componentDidMount');
+      console.log('홈Mount');
       return () => {
-        console.log('componentWillUnmount');
+        console.log('홈Unmount');
       };
     }, []),
   );
@@ -35,6 +49,11 @@ export default function HomeScreen({
       <Text style={{...styles.h3, color: color === 'dark' ? 'white' : 'black'}}>
         {isFocused ? 'focused' : 'unfocused'}
       </Text>
+      <Switch
+        value={isOn}
+        onChange={() => setIsOn(v => !v)}
+        thumbColor={isOn ? 'green' : 'gray'}
+      />
     </View>
   );
 }

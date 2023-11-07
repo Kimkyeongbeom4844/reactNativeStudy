@@ -8,6 +8,7 @@ import {
   Text,
   FlatList,
   Animated,
+  BackHandler,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import userImage from '../assets/images/userImage.jpg';
@@ -51,6 +52,25 @@ const OffCanvas = ({
       }).start();
     }
   }, [isShowOffCanvas, animation]);
+
+  useEffect(() => {
+    const event = () => {
+      if (isShowOffCanvas === true) {
+        setIsShowOffCanvas(false);
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    const backHandlerEvent = BackHandler.addEventListener(
+      'hardwareBackPress',
+      event,
+    );
+    return () => {
+      backHandlerEvent.remove();
+    };
+  }, [isShowOffCanvas]);
 
   return (
     <View
@@ -132,6 +152,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
+    zIndex: 1,
     backgroundColor: 'rgba(0,0,0,0.6)',
     flexDirection: 'row',
   },
